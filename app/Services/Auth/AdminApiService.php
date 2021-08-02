@@ -36,10 +36,7 @@ class AdminApiService
         }
         $user['token'] = $user->createToken('user token')->accessToken;
         return $user;
-        // if(!$token = auth()->attempt($request->only('email' ,'password'))){
-        //     return response(null , 401);
-        // }
-        // return response()->json(compact('token'));
+
     }
 
     public function logout()

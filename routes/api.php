@@ -20,7 +20,7 @@ Route::group([
     Route::group([
         'prefix' => 'admin',
     ], function () {
-        Route::post('/login', 'AdminApiController@login');
+        Route::post('/login', 'AdminApiController@login')->name('login');
         Route::post('/logout', 'AdminApiController@logout');
     });
 
@@ -42,10 +42,6 @@ Route::group([
         Route::post('reset-password', 'CustomerApiAuthController@resetPassword');
         Route::post('change-password', 'CustomerApiAuthController@changePassword');
         Route::post('check-code', 'CustomerApiAuthController@checkCode');
-
-        Route::post('confirm', 'VerificationController@confirmPhone');
-        Route::post('resend-code', 'VerificationController@resend');
-        Route::post('update-phone', 'VerificationController@updatePhone');
 
         Route::get('get', 'CustomerApiController@get');
         Route::post('update', 'CustomerApiController@update');
@@ -71,8 +67,9 @@ Route::group([
 ], function () {
     Route::group([
         'prefix' => 'category',
+        'as' => 'category.',
     ], function () {
-        Route::get('all', 'CategoryApiController@all');
+        Route::get('all', 'CategoryApiController@all')->name('all');
         Route::get('get', 'CategoryApiController@read');
         Route::delete('delete', 'CategoryApiController@delete');
         Route::post('create', 'CategoryApiController@create');

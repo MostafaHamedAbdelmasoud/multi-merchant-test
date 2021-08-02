@@ -222,4 +222,29 @@ class AppRepository
         return $this->paginate();
     }
 
+
+
+    /**
+     * @param $model
+     * @param null $count
+     * @param array $attributes
+     */
+    public function random_or_create($model, $count = null, $attributes = [])
+    {
+        $instance = new $model;
+
+        if (! $instance->count()) {
+            return $model->factory($count)->create($attributes);
+        }
+
+        if (count($attributes)) {
+            foreach ($attributes as $key => $value) {
+                $instance = $instance->where($key, $value);
+            }
+        }
+
+        return $instance->get()->random();
+    }
+
+
 }

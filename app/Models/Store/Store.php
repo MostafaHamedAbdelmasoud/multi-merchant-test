@@ -4,10 +4,12 @@ namespace App\Models\Store;
 
 use App\Models\Division\Category;
 use App\Models\User\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'name_en',
         'name_ar',
